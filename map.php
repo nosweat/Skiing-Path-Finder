@@ -8,6 +8,7 @@
 	*/
 	ini_set("display_errors","yes");
 	ini_set("memory_limit", -1);
+	include("db.php");
 	include("class.php");
 	
 	print "\n\n===============================\n\n";
@@ -58,12 +59,12 @@
 		if ($map) 
 		{
 			$mapClass->create($map);
-			label("O U T P U T");
+			label("==== O U T P U T ====");
 			echo "highest elevation : ". $mapClass->MAX. "\n X-coordinate: ".$mapClass->X."\n Y-coordinate: ".$mapClass->Y.
 			"\n Drop = ".$mapClass->DROP. "\n Length = ". $mapClass->LENGTH;
 			
-			echo "\n\nAnswer Email : ".$mapClass->LENGTH.$mapClass->DROP."@redmart.com";
-			break;
+			echo "\n\nResult : ".$mapClass->LENGTH.$mapClass->DROP."@redmart.com";
+			echo "\n\nGood Bye!";
 		}
 		else 
 		{
@@ -76,7 +77,8 @@
 					echo "highest elevation : ". $mapClass->MAX. "\n X-coordinate: ".$mapClass->X."\n Y-coordinate: ".$mapClass->Y.
 					"\n Drop = ".$mapClass->DROP. "\n Length = ". $mapClass->LENGTH;
 					
-					echo "\n\nAnswer Email : ".$mapClass->LENGTH.$mapClass->DROP."@redmart.com";
+					echo "\n\nResult : ".$mapClass->LENGTH.$mapClass->DROP."@redmart.com";
+					echo "\n\nGood Bye!";
 				}
 			}
 			else
