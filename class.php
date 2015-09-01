@@ -46,6 +46,10 @@
 						$this->GRID = explode(" ",$line);
 						$this->GRID[0] = isset($this->GRID[0]) ? (int) $this->GRID[0] : 0;	
 						$this->GRID[1] = isset($this->GRID[1]) ? (int) $this->GRID[1] : 0; 
+						//manual override for configuration @construct to use sqlite or not
+						if ($this->USE_SQLITE) {
+							$this->initializeDB();
+						}
 					 }
 					 else
 					 {
@@ -73,10 +77,6 @@
 				  ++$lines;
 				  echo "\033[6D";
 				  echo str_pad($lines, 4, ' ', STR_PAD_LEFT) . " #";
-				  //manual override for configuration @construct to use sqlite or not
-				  if ($this->USE_SQLITE) {
-					  $this->initializeDB();
-				  }
 				}
 				fclose($stream);
 				// begin lookup at 0,0 but the path can start anywhere
@@ -212,6 +212,7 @@
 					unset($right);
 					unset($down);
 					unset($left);
+					unset($up);
 				}
 			}
 			
@@ -403,9 +404,6 @@
 				$step = $this->createStepArray($row);
 				unset($step[0]);
 				$npath = array_merge($fstep, $step);// merge steps to create path
-				/*if (!in_array($npath,$this->PATHS))
-					array_push($this->PATHS, $npath);  // create new path
-				*/
 				$this->insertIntoPath($npath);
 			}
 			unset($results);
