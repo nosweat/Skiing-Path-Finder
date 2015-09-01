@@ -3,7 +3,7 @@
 	{
 		function __construct()
 		{
-			unlink('mapsqlitedb.db');
+			@unlink('mapsqlitedb.db');
 			$this->open('mapsqlitedb.db');
 		}
 	}
